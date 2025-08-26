@@ -117,15 +117,17 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gray-50 py-4 px-2 sm:py-8 sm:px-4">
       <div className="max-w-7xl mx-auto">
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6">
+        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-3 sm:p-6">
           {/* Header */}
-          <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">Cuestionario de frecuencia alimentaria</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center leading-tight">
+            Cuestionario de frecuencia alimentaria
+          </h1>
 
           {/* User Information */}
-          <div className="mb-8 p-4 bg-gray-50 rounded-lg">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="mb-6 sm:mb-8 p-3 sm:p-4 bg-gray-50 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
               <div>
                 <label htmlFor="apellido" className="block text-sm font-medium text-gray-700 mb-2">
                   Apellido:
@@ -135,7 +137,7 @@ const App: React.FC = () => {
                   id="apellido"
                   value={formData.apellido}
                   onChange={(e) => handleUserInfoChange("apellido", e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
                   required
                 />
               </div>
@@ -148,33 +150,32 @@ const App: React.FC = () => {
                   id="dni"
                   value={formData.dni}
                   onChange={(e) => handleUserInfoChange("dni", e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
                   required
                 />
               </div>
             </div>
-            <p className="text-sm text-gray-600 italic">
+            <p className="text-xs sm:text-sm text-gray-600 italic">
               (esta información se utilizará solamente para identificarlos con los formularios)
             </p>
           </div>
 
-          {/* Food Frequency Table */}
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse border border-gray-300">
+            <table className="w-full border-collapse border border-gray-300 min-w-[800px]">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-4 py-3 text-left font-semibold text-gray-700 min-w-[200px]">
+                  <th className="border border-gray-300 px-2 sm:px-4 py-3 text-left font-semibold text-gray-700 min-w-[180px] sm:min-w-[200px]">
                     Alimentos
                   </th>
-                  <th className="border border-gray-300 px-4 py-3 text-center font-semibold text-gray-700 min-w-[150px]">
+                  <th className="border border-gray-300 px-2 sm:px-4 py-3 text-center font-semibold text-gray-700 min-w-[120px] sm:min-w-[150px]">
                     Cantidad - porciones
                     <br />
                     <span className="text-xs font-normal">(medida casera/gramos)</span>
                   </th>
-                  <th className="border border-gray-300 px-4 py-3 text-center font-semibold text-gray-700 min-w-[600px]">
+                  <th className="border border-gray-300 px-2 sm:px-4 py-3 text-center font-semibold text-gray-700 min-w-[400px] sm:min-w-[600px]">
                     Frecuencia de consumo
                   </th>
-                  <th className="border border-gray-300 px-4 py-3 text-center font-semibold text-gray-700 min-w-[150px]">
+                  <th className="border border-gray-300 px-2 sm:px-4 py-3 text-center font-semibold text-gray-700 min-w-[120px] sm:min-w-[150px]">
                     Observaciones
                   </th>
                 </tr>
@@ -182,11 +183,10 @@ const App: React.FC = () => {
               <tbody>
                 {foodItems.map((food, index) => (
                   <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                    {/* Food Item */}
-                    <td className="border border-gray-300 px-4 py-3 font-medium text-gray-800">{food}</td>
-
-                    {/* Quantity */}
-                    <td className="border border-gray-300 px-4 py-3">
+                    <td className="border border-gray-300 px-2 sm:px-4 py-3 font-medium text-gray-800 text-sm sm:text-base">
+                      {food}
+                    </td>
+                    <td className="border border-gray-300 px-2 sm:px-4 py-3">
                       <input
                         type="text"
                         value={formData.foods[food]?.quantity || ""}
@@ -195,10 +195,8 @@ const App: React.FC = () => {
                         placeholder="Ej: 1 taza, 100g"
                       />
                     </td>
-
-                    {/* Frequency Radio Buttons */}
-                    <td className="border border-gray-300 px-4 py-3">
-                      <div className="grid grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-2">
+                    <td className="border border-gray-300 px-2 sm:px-4 py-3">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-1 sm:gap-2">
                         {frequencyOptions.map((option) => (
                           <label key={option.value} className="flex items-center space-x-1 text-xs cursor-pointer">
                             <input
@@ -207,16 +205,14 @@ const App: React.FC = () => {
                               value={option.value}
                               checked={formData.foods[food]?.frequency === option.value}
                               onChange={(e) => handleFoodChange(food, "frequency", e.target.value)}
-                              className="text-blue-600 focus:ring-blue-500"
+                              className="text-blue-600 focus:ring-blue-500 w-3 h-3 sm:w-4 sm:h-4"
                             />
-                            <span className="whitespace-nowrap">{option.label}</span>
+                            <span className="whitespace-nowrap text-xs">{option.label}</span>
                           </label>
                         ))}
                       </div>
                     </td>
-
-                    {/* Observations */}
-                    <td className="border border-gray-300 px-4 py-3">
+                    <td className="border border-gray-300 px-2 sm:px-4 py-3">
                       <input
                         type="text"
                         value={formData.foods[food]?.observations || ""}
@@ -231,11 +227,10 @@ const App: React.FC = () => {
             </table>
           </div>
 
-          {/* Submit Button */}
-          <div className="mt-8 text-center">
+          <div className="mt-6 sm:mt-8 text-center">
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-base"
             >
               Enviar Cuestionario
             </button>
@@ -247,3 +242,4 @@ const App: React.FC = () => {
 }
 
 export default App
+
