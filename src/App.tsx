@@ -78,16 +78,16 @@ const App: React.FC = () => {
 
   const frequencyOptions = [
     { value: "never", label: "Nunca" },
-    { value: "1-month", label: "1 vez al mes" },
-    { value: "2-month", label: "2 veces al mes" },
-    { value: "3-month", label: "3 veces al mes" },
-    { value: "1-week", label: "1 vez a la semana" },
-    { value: "2-3-week", label: "2-3 veces a la semana" },
-    { value: "4-6-week", label: "4-6 veces a la semana" },
-    { value: "1-day", label: "1 vez al día" },
-    { value: "2-3-day", label: "2-3 veces al día" },
-    { value: "4-5-day", label: "4-5 veces al día" },
-    { value: "6-plus-day", label: "+6 veces al día" },
+    { value: "1-month", label: "1 al mes" },
+    { value: "2-month", label: "2 al mes" },
+    { value: "3-month", label: "3 al mes" },
+    { value: "1-week", label: "1  a la semana" },
+    { value: "2-3-week", label: "2-3 a la semana" },
+    { value: "4-6-week", label: "4-6 a la semana" },
+    { value: "1-day", label: "1 al día" },
+    { value: "2-3-day", label: "2-3 al día" },
+    { value: "4-5-day", label: "4-5 al día" },
+    { value: "6-plus-day", label: "+6 al día" },
   ]
 
   const handleUserInfoChange = (field: "apellido" | "dni", value: string) => {
